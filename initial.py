@@ -5,7 +5,7 @@ from requests.exceptions import HTTPError
 import requests
 
 conn = psycopg2.connect(database="postgres", user="postgres",
-    password="4816", host="localhost", port=5432)
+    password="password", host="localhost", port=5432)
 cur = conn.cursor()
 
 cur.execute("DROP TABLE IF EXISTS unesco_stations")

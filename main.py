@@ -1,20 +1,16 @@
 import requests
 from requests.exceptions import HTTPError
 import csv
-import pandas as pd
 
 
 try:
-    response = requests.get('http://www.ioc-sealevelmonitoring.org/ssc/service.php?format=json')
+    response = requests.get('https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations.json?type=waterlevels&units=metric')
     response.raise_for_status()
     # access JSOn content
     jsonResponse = response.json()
 
-    # df = pd.DataFrame(jsonResponse)
-    # df.to_csv("list_of_stations.csv")
-
     print("Entire JSON response")
-    print(jsonResponse)
+    print(jsonResponse['stations'])
 
 except HTTPError as http_err:
     print(f'HTTP error occurred: {http_err}')
