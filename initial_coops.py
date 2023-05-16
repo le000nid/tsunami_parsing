@@ -1,16 +1,11 @@
-from datetime import datetime
-
 import psycopg2
 from requests.exceptions import HTTPError
 import requests
 
+
 conn = psycopg2.connect(database="postgres", user="postgres",
                         password="password", host="localhost", port=5432)
 cur = conn.cursor()
-
-cur.execute("DROP TABLE IF EXISTS coops_stations")
-cur.execute("CREATE TABLE coops_stations (id SERIAL PRIMARY KEY, " +
-            "name VARCHAR(64), state VARCHAR(64), latitude DOUBLE PRECISION, longitude DOUBLE PRECISION)")
 
 try:
     response = requests.get(
@@ -20,14 +15,14 @@ try:
 
     insert_list = []
     for station in jsonResponse["stations"]:
-        id = station['id'] if 'id' in station.keys() else ""
+        station_id = station['id'] if 'id' in station.keys() else ""
         name = station['name'] if 'name' in station.keys() else ""
         state = station['state'] if 'state' in station.keys() else ""
         lat = station['lat'] if 'lat' in station.keys() else 0.0
         lng = station['lng'] if 'lng' in station.keys() else 0.0
-        station_to_insert = (id, name, state, lat, lng)
+        station_to_insert = (station_id, name, "America", state, lat, lng, "coops")
         insert_list.append(station_to_insert)
-    cur.executemany("INSERT INTO coops_stations VALUES(%s,%s,%s,%s,%s)", insert_list)
+    cur.executemany("INSERT INTO stations(station_id,name,country,state,latitude,longitude,source) VALUES(%s,%s,%s,%s,%s,%s,%s)", insert_list)
 
 
 
