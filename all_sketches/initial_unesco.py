@@ -69,7 +69,7 @@ try:
         for i in sonel_tg:
             station_to_insert = (i, name, country, "-", latitude, longitude, "sonel_tg")
             insert_list.append(station_to_insert)
-            
+
     cur.executemany("INSERT INTO stations(station_id,name,country,state,latitude,longitude,source) VALUES(%s,%s,%s,%s,%s,%s,%s)", insert_list)
 
 
