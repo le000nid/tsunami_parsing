@@ -15,7 +15,6 @@ steps = [
             "housesDestroyed INTEGER, housesDestroyedAmountOrder INTEGER, housesDestroyedAmountOrderTotal INTEGER, housesDestroyedTotal INTEGER, injuries INTEGER, injuriesAmountOrder INTEGER, injuriesAmountOrderTotal INTEGER, " +
             "injuriesTotal INTEGER, maxWaterHeight INTEGER, minute INTEGER, missing INTEGER, missingAmountOrder INTEGER, missingAmountOrderTotal INTEGER, missingTotal INTEGER, " +
             "month INTEGER, numDeposits INTEGER, numRunups INTEGER, regionCode INTEGER, second INTEGER, tsIntensity INTEGER, tsMtAbe INTEGER, " +
-            "volcanoEventId INTEGER, year INTEGER, warningStatusId INTEGER, publish BOOL, " +
-            "eqDepth INTEGER, eqMagnitude INTEGER, tsMtIi INTEGER, " +
+            "volcanoEventId INTEGER, year INTEGER, warningStatusId INTEGER, publish BOOL, eqDepth INTEGER, eqMagnitude INTEGER, tsMtIi INTEGER, " +
             "latitude DOUBLE PRECISION, longitude DOUBLE PRECISION)")
 ]
